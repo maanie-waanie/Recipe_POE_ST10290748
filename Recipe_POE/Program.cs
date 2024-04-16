@@ -20,9 +20,10 @@ namespace Recipe_POE
         static void Main(string[] args)
         {
             
-
+            //Creating a new recipe object
             Recipe recipe = new Recipe();
 
+            //A While loop is used to display the menu of options
             while (true)
             {
                 Console.WriteLine("\n\nWhat would you like to do?");

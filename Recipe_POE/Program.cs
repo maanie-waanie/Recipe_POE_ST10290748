@@ -24,7 +24,7 @@ namespace Recipe_POE
             Recipe recipe = new Recipe();
 
             //A While loop is used to display the menu of options
-            while (true)
+            while (true)     
             {
                 Console.WriteLine("\n\nWhat would you like to do?");
                 Console.WriteLine("--------------------------");

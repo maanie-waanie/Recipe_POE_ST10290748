@@ -101,6 +101,7 @@ namespace Recipe_POE
             }
         }
 
+        //For loop used to reset the quantities to their original values
         public void ResetQuantities()
         {
             for (int i = 0; i < ingredientNo; i++)

@@ -66,22 +66,24 @@ namespace Recipe_POE
             }
         }
 
+        //Method to display the recipe in the colour green
         public void DisplayRecipe()
         {
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("--------------------------");
             Console.WriteLine("Recipe Name: {0}", Name);
+
+            //To display the ingredients and their quantities
             Console.WriteLine("\n\nRecipe:");
             Console.WriteLine("-------");
-
             for (int i = 0; i < ingredientNo; i++)
             {
                 Console.WriteLine($"{ingredientNames[i]}: {quantities[i]} {measurements[i]}");
             }
 
+            //To display all the steps of the recipe
             Console.WriteLine("\nSteps:");
             Console.WriteLine("------");
-
             for (int i = 0; i < stepsNo; i++)
             {
                 Console.WriteLine($"{i + 1}. {steps[i]}");

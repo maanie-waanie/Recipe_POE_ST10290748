@@ -92,6 +92,7 @@ namespace Recipe_POE
             Console.ResetColor();
         }
 
+        //For loop used to scale the recipe quantities by a factor
         public void ScaleRecipe(float factor)
         {
             for (int i = 0; i < ingredientNo; i++)

@@ -25,6 +25,8 @@ namespace Recipe_POE
         public int stepsNo { get; set; }
         public string[] steps { get; set; }
 
+
+        //Constructor to initialize a new recipe and naming it
         public Recipe()
 
         {
@@ -38,6 +40,7 @@ namespace Recipe_POE
             quantities = new float[ingredientNo];
             measurements = new string[ingredientNo];
 
+            //For loop that inputs ingredients, their quantities and their unit of measurement
             for (int i = 0; i < ingredientNo; i++)
             {
                 Console.Write($"Enter the name of ingredient {i + 1}: ");
@@ -55,6 +58,7 @@ namespace Recipe_POE
 
             steps = new string[stepsNo];
 
+            //For loop that inputs each of the recipe steps
             for (int i = 0; i < stepsNo; i++)
             {
                 Console.Write($"Enter step {i + 1}: ");

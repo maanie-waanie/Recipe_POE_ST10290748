@@ -5,6 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
+/// <summary>
+/// Aman Adams
+/// ST10290748
+/// PROG6221
+/// PROG POE PART 1
+/// Code included in this POE has been created with using this website as help: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays 
+/// </summary>
+
 namespace Recipe_POE
 {
     class Recipe
@@ -58,7 +66,7 @@ namespace Recipe_POE
         {
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("--------------------------");
-            Console.WriteLine("Recipe: {0}", Name);
+            Console.WriteLine("Recipe Name: {0}", Name);
             Console.WriteLine("\n\nRecipe:");
             Console.WriteLine("-------");
 

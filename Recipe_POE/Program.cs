@@ -37,6 +37,7 @@ namespace Recipe_POE
 
                 int choice = int.Parse(Console.ReadLine());
 
+                //Switch statement to perform action based on the user choice
                 switch (choice)
                 {
                     case 1:

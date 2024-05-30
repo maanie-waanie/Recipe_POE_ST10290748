@@ -15,7 +15,7 @@ namespace Recipe_POE
         static void Main(string[] args)
         {
             CookBook recipeBook = new CookBook(); //Initialize a new cookbook
-            Recipe currentRecipe = null;    
+            Recipe currentRecipe = null;     
 
             while (true)
             {

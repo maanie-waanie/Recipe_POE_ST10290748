@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 /// </summary>
 
 namespace Recipe_POE
-{
+{ 
     class Ingredient
     {
         public string Name { get; set; }

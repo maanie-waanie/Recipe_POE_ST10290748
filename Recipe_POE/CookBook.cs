@@ -13,7 +13,7 @@ using System.Linq;
 namespace Recipe_POE
 {
     class CookBook
-    {
+    { 
         public List<Recipe> Recipes { get; set; }
 
         //--------------------------------------------------------------------------------------------------------------------------------------//

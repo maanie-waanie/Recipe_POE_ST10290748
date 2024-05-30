@@ -50,12 +50,12 @@ namespace Recipe_POE
 
         //--------------------------------------------------------------------------------------------------------------------------------------//
         //Display the recipe's details including ingredients, steps, and total calories
-        public void displayRecipe()
+        public void displayRecipe() 
         {
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("--------------------------");
             Console.WriteLine("Recipe Name: {0}", Name);
-
+               
             Console.WriteLine("\n\nIngredients:");
             Console.WriteLine("------------");
             for (int i = 0; i < Ingredients.Count; i++)

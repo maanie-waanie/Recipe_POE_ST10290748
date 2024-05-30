@@ -10,7 +10,7 @@ using System.Linq;
 /// Code included in this POE has been created with using this website as help: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays 
 /// </summary>
 
-namespace Recipe_POE
+namespace Recipe_POE 
 {
     class CookBook
     {   

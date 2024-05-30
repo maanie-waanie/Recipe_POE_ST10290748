@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 /// <summary>
 /// Aman Adams
 /// ST10290748
 /// PROG6221
-/// PROG POE PART 1
+/// PROG POE PART 2
 /// Code included in this POE has been created with using this website as help: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays 
 /// </summary>
 
@@ -18,98 +15,103 @@ namespace Recipe_POE
     class Recipe
     {
         public string Name { get; set; }
-        public int ingredientNo { get; set; }
-        public string[] ingredientNames { get; set; }
-        public float[] quantities { get; set; }
-        public string[] measurements { get; set; }
-        public int stepsNo { get; set; }
-        public string[] steps { get; set; }
+        public List<Ingredient> Ingredients { get; set; }
+        public List<string> Steps { get; set; }
 
+        public delegate void calorieNotification(string message); //Delegate for calorie notification
+        public event calorieNotification OnCaloriesExceeded; //Event for calorie notification
 
-        //Constructor to initialize a new recipe and naming it
-        public Recipe()
+        public delegate int calorieCalculator(); //Delegate for calorie calculation
+        public calorieCalculator calculateTotalCaloriesDelegate; //Delegate instance
 
+        //--------------------------------------------------------------------------------------------------------------------------------------//
+        //Constructor to initialize a recipe with its name, ingredients, steps and calorie calculation
+        public Recipe(string name)
         {
-            Console.WriteLine("Enter recipe name:");
-            Name = Console.ReadLine();
-
-            Console.Write("Enter the number of ingredients: ");
-            ingredientNo = int.Parse(Console.ReadLine());
-
-            ingredientNames = new string[ingredientNo];
-            quantities = new float[ingredientNo];
-            measurements = new string[ingredientNo];
-
-            //For loop that inputs ingredients, their quantities and their unit of measurement
-            for (int i = 0; i < ingredientNo; i++)
-            {
-                Console.Write($"Enter the name of ingredient {i + 1}: ");
-                ingredientNames[i] = Console.ReadLine();
-
-                Console.Write($"Enter the quantity of {ingredientNames[i]}: ");
-                quantities[i] = float.Parse(Console.ReadLine());
-
-                Console.Write($"Enter the unit of measurement for {ingredientNames[i]}: ");
-                measurements[i] = Console.ReadLine();
-            }
-
-            Console.Write("Enter the number of steps: ");
-            stepsNo = int.Parse(Console.ReadLine());
-
-            steps = new string[stepsNo];
-
-            //For loop that inputs each of the recipe steps
-            for (int i = 0; i < stepsNo; i++)
-            {
-                Console.Write($"Enter step {i + 1}: ");
-                steps[i] = Console.ReadLine();
-            }
+            this.Name = name;
+            this.Ingredients = new List<Ingredient>();
+            this.Steps = new List<string>();
+            this.calculateTotalCaloriesDelegate = calculateTotalCalories; //Assign the method to the delegate
         }
 
-        //Method to display the recipe in the colour green
-        public void DisplayRecipe()
+        //--------------------------------------------------------------------------------------------------------------------------------------//
+        //Add an ingredient to the recipe
+        public void AddIngredient(Ingredient ingredient)
+        {
+            Ingredients.Add(ingredient);
+        }
+
+        //--------------------------------------------------------------------------------------------------------------------------------------//
+        //Add a step to the recipe
+        public void AddStep(string step)
+        {
+            Steps.Add(step);
+        }
+
+        //--------------------------------------------------------------------------------------------------------------------------------------//
+        //Display the recipe's details including ingredients, steps, and total calories
+        public void displayRecipe()
         {
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("--------------------------");
             Console.WriteLine("Recipe Name: {0}", Name);
 
-            //To display the ingredients and their quantities
-            Console.WriteLine("\n\nRecipe:");
-            Console.WriteLine("-------");
-            for (int i = 0; i < ingredientNo; i++)
+            Console.WriteLine("\n\nIngredients:");
+            Console.WriteLine("------------");
+            for (int i = 0; i < Ingredients.Count; i++)
             {
-                Console.WriteLine($"{ingredientNames[i]}: {quantities[i]} {measurements[i]}");
+                var ingredient = Ingredients[i];
+                Console.WriteLine($"- {ingredient.Name}: {ingredient.Quantities} {ingredient.Measurements}, {ingredient.Calories} calories, {ingredient.FoodGroup}");
             }
 
-            //To display all the steps of the recipe
             Console.WriteLine("\nSteps:");
             Console.WriteLine("------");
-            for (int i = 0; i < stepsNo; i++)
+            for (int i = 0; i < Steps.Count; i++)
             {
-                Console.WriteLine($"{i + 1}. {steps[i]}");
+                Console.WriteLine($"{i + 1}. {Steps[i]}");
+            }
+
+            int totalCalories = calculateTotalCaloriesDelegate(); //Use the delegate to calculate total calories
+            Console.WriteLine($"\nTotal Calories: {totalCalories}");
+            if (totalCalories > 300)
+            {
+                OnCaloriesExceeded?.Invoke("Warning: Total calories exceed 300!"); //Notify if calories exceed 300
             }
             Console.WriteLine("--------------------------");
             Console.ResetColor();
         }
 
-        //For loop used to scale the recipe quantities by a factor
-        public void ScaleRecipe(float factor)
+        //--------------------------------------------------------------------------------------------------------------------------------------//
+        //Calculate the total calories of the recipe
+        public int calculateTotalCalories()
         {
-            for (int i = 0; i < ingredientNo; i++)
+            int totalCalories = 0;
+            for (int i = 0; i < Ingredients.Count; i++)
             {
-                quantities[i] *= factor;
+                totalCalories += Ingredients[i].Calories;
+            }
+            return totalCalories;
+        }
+
+        //--------------------------------------------------------------------------------------------------------------------------------------//
+        //Scale the quantities of ingredients by a given factor
+        public void scaleRecipe(float factor)
+        {
+            for (int i = 0; i < Ingredients.Count; i++)
+            {
+                Ingredients[i].Quantities *= factor;
             }
         }
 
-        //For loop used to reset the quantities to their original values
-        public void ResetQuantities()
+        //--------------------------------------------------------------------------------------------------------------------------------------//
+        //Reset the quantities of ingredients by dividing by the scaling factor
+        public void resetQuantities(float factor)
         {
-            for (int i = 0; i < ingredientNo; i++)
+            for (int i = 0; i < Ingredients.Count; i++)
             {
-                quantities[i] /= 1.0f;
+                Ingredients[i].Quantities /= factor;
             }
         }
     }
-
 }
-//-----------------------------------------------------------------------END OF FILE----------------------------------------------------------------//
+//--------------------------------------------------END OF FILE---------------------------------------------------------------------------------//

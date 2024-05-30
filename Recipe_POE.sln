@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recipe_POE", "Recipe_POE\Recipe_POE.csproj", "{543EE9D3-D5B5-4428-BA40-B712801F8638}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeCalorieTest", "RecipeCalorieTest\RecipeCalorieTest.csproj", "{994C9587-E658-4615-B54F-D3F5AD1743B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{543EE9D3-D5B5-4428-BA40-B712801F8638}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{543EE9D3-D5B5-4428-BA40-B712801F8638}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{543EE9D3-D5B5-4428-BA40-B712801F8638}.Release|Any CPU.Build.0 = Release|Any CPU
+		{994C9587-E658-4615-B54F-D3F5AD1743B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{994C9587-E658-4615-B54F-D3F5AD1743B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{994C9587-E658-4615-B54F-D3F5AD1743B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{994C9587-E658-4615-B54F-D3F5AD1743B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

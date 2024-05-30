@@ -45,7 +45,7 @@ namespace Recipe_POE
         //Add a step to the recipe
         public void AddStep(string step)
         {  
-            Steps.Add(step);
+            Steps.Add(step); 
         }
 
         //--------------------------------------------------------------------------------------------------------------------------------------//
